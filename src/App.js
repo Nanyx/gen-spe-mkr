@@ -1,11 +1,16 @@
 import React from 'react';
+import Grid from 'react-grid-layout';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="app">
-    </div>
-  );
-}
+export default class extends React.Component {
+  render(){
+    return (
+      <div className="app">
+        <Grid>
 
-export default App;
+        </Grid>
+      </div>  
+    );
+  }
+}

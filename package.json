@@ -9,6 +9,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-grid": "^4.0.3",
+    "react-grid-layout": "^0.17.1",
     "react-scripts": "3.3.0"
   },
   "scripts": {
