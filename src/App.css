@@ -1,6 +1,6 @@
 .app {
-  background-color: #282c34;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
   min-height: calc(100vh + 50px);
   width: 100%;
 }
@@ -9,6 +9,6 @@
   width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 50px;
-  padding-bottom: 100px;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }

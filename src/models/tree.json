@@ -1,7 +1,4 @@
 [
-  {"i":"a1-a2", "x":3, "y":1, "w":1, "h":1, "static":true},
-  {"i":"a2-a3", "x":7, "y":1, "w":1, "h":1, "static":true},
-  {"i":"a3-a4", "x":11, "y":1, "w":1, "h":1, "static":true},
   {"i":"b1-b2", "x":3, "y":5, "w":1, "h":1, "static":true},
   {"i":"b2-b3", "x":7, "y":5, "w":1, "h":1, "static":true},
   {"i":"b3-b4", "x":11, "y":5, "w":1, "h":1, "static":true},

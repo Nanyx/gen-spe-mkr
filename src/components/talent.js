@@ -28,9 +28,8 @@ export default class extends React.Component {
   }
 
   render(){
-    console.log(this.state);
     return (
-      <div className="talent">
+      <div className="talent flex-column">
         <Group.Container>
           <Group.CheckBlock prepend value={this.state.learned} onChange={this.learnedChange}/>
           <Name value={this.state.name} onChange={this.nameChange}/>
@@ -48,7 +47,7 @@ const Name = ({value, onChange}) => (
 );
 
 const Desc = ({value, onChange}) => (
-  <div>
+  <div className="flex-grow-1">
     <textarea className="form-control desc" value={value} onChange={(e) => onChange(e.target.value)} />
   </div>
 );

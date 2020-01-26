@@ -1,0 +1,33 @@
+.info {
+  margin-bottom: 20px;
+}
+
+.info input {
+  border: none;
+}
+.info input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.info input {
+  font-weight: bolder;
+}
+.info input.form-control {
+  padding: 0px;
+}
+
+.info .text {
+  padding-right: 10px;
+}
+
+.info .form-control-lg {
+  height: 1em;
+  font-size: 1.5rem;
+}
+.info .form-control-xl {
+  height: 1em;
+  font-size: 2.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+}
