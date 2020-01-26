@@ -1,15 +1,18 @@
 import React from 'react';
-import Grid from 'react-grid-layout';
 
 import './App.css';
+
+import Info from './components/info';
+import Tree from './components/tree';
 
 export default class extends React.Component {
   render(){
     return (
       <div className="app">
-        <Grid>
-
-        </Grid>
+        <div className="container">
+          <Info/>
+          <Tree/>
+        </div>
       </div>  
     );
   }

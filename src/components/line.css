@@ -1,0 +1,16 @@
+.line {
+  text-align: center;
+  height: 100%;
+}
+
+.line .hor {
+  border-bottom: 1px dashed black;
+  border-top: 1px dashed black;
+  height: 6px;
+}
+
+.line .ver {
+  width: 6px;
+  border-left: 1px dashed black;
+  border-right: 1px dashed black;
+}
