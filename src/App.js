@@ -9,7 +9,7 @@ export default class extends React.Component {
   render(){
     return (
       <div className="app">
-        <div className="container">
+        <div className="main-container">
           <Info/>
           <Tree/>
         </div>

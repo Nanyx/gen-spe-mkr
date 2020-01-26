@@ -10,7 +10,7 @@ import * as Line from './line';
 import layout from '../models/tree.json';
 
 export default () => (
-  <Grid className="layout" layout={layout} cols={7} rowHeight={100} width={1200}>
+  <Grid className="layout" layout={layout} cols={15} rowHeight={80} width={1200} margin={[0,0]}>
     {layout.map(segment => {
       return (
         <div key={segment.i}>

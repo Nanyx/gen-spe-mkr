@@ -8,9 +8,19 @@
   border-top: 1px dashed black;
   height: 6px;
 }
+.line .hor.active {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  background-color: black;
+}
 
 .line .ver {
   width: 6px;
   border-left: 1px dashed black;
   border-right: 1px dashed black;
+}
+.line .ver.active {
+  border-Left-style: solid;
+  border-right-style: solid;
+  background-color: black;
 }

@@ -1,6 +1,8 @@
 export default class {
-  name=""
-  desc=""
+  name="";
+  desc="";
+  learned=false;
+  active=false;
   constructor(id){
     this.id = id;
   }

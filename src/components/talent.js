@@ -1,6 +1,7 @@
 import React from 'react';
 
 import model from '../models/talent';
+import * as Group from './group';
 
 import './talent.css';
 
@@ -8,29 +9,46 @@ export default class extends React.Component {
 
   constructor(props){
     super(props);
-    let init = this.props.talent || new model(this.props.segID);
-
-    init.name=this.props.segID;
-    this.state = {...init};
-    console.log(this.state);
+    this.state = {...(this.props.talent || new model(this.props.segID))};
   }
 
   descChange = (desc) => {
     this.setState({desc});
     //this.props.onChange(talent);
   }
+  nameChange = (name) => {
+    this.setState({name});
+    //
+  }
+  activeChange = (active) => {
+    this.setState({active});
+  }
+  learnedChange = (learned) => {
+    this.setState({learned});
+  }
 
   render(){
+    console.log(this.state);
     return (
       <div className="talent">
-        laskjdflaksdf
-        <div>{this.state.name}</div>
+        <Group.Container>
+          <Group.CheckBlock prepend value={this.state.learned} onChange={this.learnedChange}/>
+          <Name value={this.state.name} onChange={this.nameChange}/>
+          <Group.CheckBlock value={this.state.active} onChange={this.activeChange}/>
+        </Group.Container>
         <Desc value={this.state.desc} onChange={this.descChange}/>
+        <div></div>
       </div>
     );
   }
 }
 
-const Desc = (value, onChange) => (
-  <textarea className="form-control" value={value} onChange={(e) => onChange(e.target.value)} />
+const Name = ({value, onChange}) => (
+  <input className="form-control" value={value} onChange={(e) => onChange(e.target.value)}/>
+);
+
+const Desc = ({value, onChange}) => (
+  <div>
+    <textarea className="form-control desc" value={value} onChange={(e) => onChange(e.target.value)} />
+  </div>
 );
