@@ -31,7 +31,7 @@ export default class extends React.Component {
 const Career = ({value, onChange = (e)=>{}}) => (
   <div>
     <input 
-      className="form-control form-control-lg" 
+      className="form-control form-control-lg text-uppercase" 
       placeholder="CAREER" value={value} 
       onChange={(e) => onChange(e.target.value)}
     />
@@ -40,7 +40,7 @@ const Career = ({value, onChange = (e)=>{}}) => (
 
 const Specialization = ({value, onChange = (e)=>{}}) => (
   <div>
-    <input className="form-control form-control-xl" 
+    <input className="form-control form-control-xl text-uppercase" 
       placeholder="SPECIALIZATION" value={value} 
       onChange={(e)=>onChange(e.target.value)}
     />

@@ -46,7 +46,7 @@ export default class extends React.Component {
 }
 
 const Name = ({value, onChange}) => (
-  <input className="form-control" value={value} onChange={(e) => onChange(e.target.value)}/>
+  <input className="form-control title text-uppercase" value={value} onChange={(e) => onChange(e.target.value)}/>
 );
 
 const Desc = ({value, onChange}) => (

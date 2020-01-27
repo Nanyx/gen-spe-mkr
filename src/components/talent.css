@@ -15,6 +15,10 @@
   height: 100%;
 }
 
+.talent .title {
+  font-weight: bolder;
+}
+
 .talent .rank i {
   position: relative;
   left: 3px;
