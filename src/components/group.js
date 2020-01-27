@@ -6,10 +6,10 @@ export const Container = ({children}) => (
   </div>
 );
 
-export const CheckBlock = ({value, prepend, onChange}) => (
+export const Item = ({className, children, prepend, onClick}) => (
   <div className={`input-group-${prepend? "prepend":"append"}`}>
-    <div className="input-group-text">
-      <input type="checkbox" checked={value} onChange={(e) => onChange(e.target.checked)}/>
+    <div className={`input-group-text ${className}`} onClick={onClick}>
+      {children}
     </div>
   </div>
 );

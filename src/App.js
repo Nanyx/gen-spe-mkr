@@ -6,6 +6,11 @@ import Info from './components/info';
 import Tree from './components/tree';
 
 export default class extends React.Component {
+
+  componentDidMount(){
+    
+  }
+
   render(){
     return (
       <div className="app">

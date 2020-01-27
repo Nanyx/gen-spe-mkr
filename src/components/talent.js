@@ -20,20 +20,23 @@ export default class extends React.Component {
     this.setState({name});
     //
   }
-  activeChange = (active) => {
-    this.setState({active});
+  activeChange = () => {
+    this.setState({isActive:!this.state.isActive});
   }
-  learnedChange = (learned) => {
-    this.setState({learned});
+  rankChange = (e) => {
+    e.stopPropagation();
+    this.setState({isRank:!this.state.isRank});
   }
 
   render(){
+    console.log(this.state);
     return (
       <div className="talent flex-column">
         <Group.Container>
-          <Group.CheckBlock prepend value={this.state.learned} onChange={this.learnedChange}/>
           <Name value={this.state.name} onChange={this.nameChange}/>
-          <Group.CheckBlock value={this.state.active} onChange={this.activeChange}/>
+          <Group.Item className={this.state.isActive?"talent-active active":"talent-active"} onClick={this.activeChange}>
+            <Rank isRank={this.state.isRank} onClick={this.rankChange}/>
+          </Group.Item>
         </Group.Container>
         <Desc value={this.state.desc} onChange={this.descChange}/>
         <div></div>
@@ -49,5 +52,18 @@ const Name = ({value, onChange}) => (
 const Desc = ({value, onChange}) => (
   <div className="flex-grow-1">
     <textarea className="form-control desc" value={value} onChange={(e) => onChange(e.target.value)} />
+  </div>
+);
+
+const Rank = ({isRank, onClick}) => (
+  <div onClick={onClick}>
+    {isRank ? (
+      <div className="rank">
+        <i className="far fa-square fa-rotate-45"/>
+        <i className="far fa-square fa-rotate-45"/>
+      </div>
+    ):(
+      <i className="far fa-square fa-rotate-45"/>
+    )}
   </div>
 );
