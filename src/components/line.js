@@ -16,7 +16,7 @@ export class HLine extends Line {
   render(){
     return (
       <div className="line d-flex justify-content-center" onClick={this.onClick}>
-        <div className={`align-self-center flex-fill hor ${this.state.active && "active"}`}/>
+        <div className={`align-self-center flex-fill hor ${this.state.active ? "active":"no-print"}`}/>
       </div>
     );
   }
@@ -26,7 +26,7 @@ export class VLine extends Line {
   render(){
     return (
       <div className="line d-flex justify-content-center" onClick={this.onClick}>
-        <div className={`align-items-stretch ver ${this.state.active && "active"}`}></div>
+        <div className={`align-items-stretch ver ${this.state.active ? "active":"no-print"}`}></div>
       </div>
     );
   }

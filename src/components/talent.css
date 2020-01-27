@@ -39,3 +39,37 @@
 .talent .talent-active.active {
   background-color: #F6C55C;
 }
+
+.xp {
+  width: 50px;
+  text-align: center;
+  position: absolute;
+  font-weight: bolder;
+  background-color: lightgray;
+  bottom:-0.5em;
+  margin-left: -25px;
+  left:50%;
+}
+.xp::before {
+  content: "";
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid lightgray; 
+  position: absolute;
+  left: -12px;
+}
+.xp::after {
+  content: "";
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid lightgray; 
+  position: absolute;
+  top:0px;
+  right: -12px;
+}

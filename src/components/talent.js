@@ -28,6 +28,16 @@ export default class extends React.Component {
     this.setState({isRank:!this.state.isRank});
   }
 
+  getXPValue = () => {
+    switch(this.state.id[0]){
+      case 'a': return 5;
+      case 'b': return 10;
+      case 'c': return 15;
+      case 'd': return 20;
+      case 'e': return 25;
+    }
+  }
+
   render(){
     console.log(this.state);
     return (
@@ -39,7 +49,7 @@ export default class extends React.Component {
           </Group.Item>
         </Group.Container>
         <Desc value={this.state.desc} onChange={this.descChange}/>
-        <div></div>
+        <XP value={this.getXPValue()}/>
       </div>
     );
   }
@@ -65,5 +75,11 @@ const Rank = ({isRank, onClick}) => (
     ):(
       <i className="far fa-square fa-rotate-45"/>
     )}
+  </div>
+);
+
+const XP = ({value}) => (
+  <div className="xp">
+    {value} XP
   </div>
 );
