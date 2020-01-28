@@ -3,7 +3,7 @@ import React from 'react';
 import './menu.css';
 
 export const Container = ({children}) => (
-  <ul className="menu">
+  <ul className="menu no-print">
     {children}
   </ul>
 );
