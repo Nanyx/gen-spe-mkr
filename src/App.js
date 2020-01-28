@@ -16,9 +16,7 @@ export default class extends React.Component {
     let workbook = window.localStorage.getItem("workbook");
     try {
       workbook = JSON.parse(workbook);
-      console.log(workbook);
       let last = workbook.specs[workbook.specs.length-1].id;
-      console.log(last);
       this.setState({workbook:workbook, current:last});
     } catch {}
   }
