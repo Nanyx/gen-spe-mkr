@@ -13,8 +13,7 @@ export default class extends React.Component {
   }
 
   descChange = (desc) => {
-    this.setState({desc});
-    //this.props.onChange(talent);
+    this.setState({desc}, ()=>this.props.onChange(this.state));
   }
   nameChange = (name) => {
     this.setState({name});
@@ -35,11 +34,11 @@ export default class extends React.Component {
       case 'c': return 15;
       case 'd': return 20;
       case 'e': return 25;
+      default: return;
     }
   }
 
   render(){
-    console.log(this.state);
     return (
       <div className="talent flex-column">
         <Group.Container>

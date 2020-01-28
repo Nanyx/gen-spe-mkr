@@ -15,7 +15,7 @@ export default () => (
       return (
         <div key={segment.i}>
           {segment.i.split("-")[0].length === 1 ? (
-            <Talent segID={segment.i}/>
+            <Talent segID={segment.i} onChange={()=>{}/*this.props.treeChange*/}/>
           ):(
             segment.i[0] === segment.i[3] ? (
               <Line.HLine/>

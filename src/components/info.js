@@ -7,14 +7,18 @@ import Info from '../models/info';
 export default class extends React.Component {
   state={...(this.props.info || new Info())}
 
+  save = () => {
+    this.props.onChange(this.state);
+  }
+  
   careerChange = (career) => {
-    this.setState({career});
+    this.setState({career}, this.save);
   }
   specChange = (spec) => {
-    this.setState({spec});
+    this.setState({spec}, this.save);
   }
   skillsChange = (skills) => {
-    this.setState({skills});
+    this.setState({skills}, this.save);
   }
 
   render(){

@@ -1,0 +1,19 @@
+.menu {
+  position: fixed;
+  right: 100px;
+  top: 25vh;
+  z-index: 100;
+}
+
+ul.menu {
+  list-style-type: none;
+}
+
+.menu li {
+  margin-bottom:15px;
+}
+
+.menu button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 40px;
+}
