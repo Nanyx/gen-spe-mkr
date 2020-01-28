@@ -12,19 +12,20 @@ export default class extends React.Component {
     this.state = {...(this.props.talent || new model(this.props.segID))};
   }
 
+  save = () => this.props.onChange(this.state);
+
   descChange = (desc) => {
-    this.setState({desc}, ()=>this.props.onChange(this.state));
+    this.setState({desc}, this.save);
   }
   nameChange = (name) => {
-    this.setState({name});
-    //
+    this.setState({name}, this.save);
   }
   activeChange = () => {
-    this.setState({isActive:!this.state.isActive});
+    this.setState({isActive:!this.state.isActive}, this.save);
   }
   rankChange = (e) => {
     e.stopPropagation();
-    this.setState({isRank:!this.state.isRank});
+    this.setState({isRank:!this.state.isRank}, this.save);
   }
 
   getXPValue = () => {

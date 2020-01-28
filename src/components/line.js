@@ -8,7 +8,9 @@ class Line extends React.Component {
   }
 
   onClick = () => {
-    this.setState({active:!this.state.active});
+    this.setState({active:!this.state.active}, () => {
+      this.props.onChange({id:this.props.segID, ...this.state});
+    });
   }
 }
 

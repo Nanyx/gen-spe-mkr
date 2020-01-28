@@ -10,27 +10,28 @@ import Workbook from './models/workbook';
 import Spec from './models/spec';
 
 export default class extends React.Component {
-
-  state = {
-    workbook:null,
-    current:null
-  }
+  state = { workbook:null, current:null }
 
   componentDidMount(){
     let workbook = window.localStorage.getItem("workbook");
-    if(!workbook){ workbook = new Workbook(); }
-    else { workbook = JSON.strignify(workbook); }
-    if(workbook.specs.legnth === 0){ workbook.specs.push(new Spec()); }
-    this.setState({workbook:workbook});
+    try {
+      workbook = JSON.parse(workbook);
+      console.log(workbook);
+      let last = workbook.specs[workbook.specs.length-1].id;
+      console.log(last);
+      this.setState({workbook:workbook, current:last});
+    } catch {}
   }
 
   addSpec = () => {
     let workbook = this.state.workbook;
+    if(!workbook){ 
+      workbook = new Workbook();
+    }
     let spec = new Spec();
     workbook.specs.push(spec);
     this.setState({workbook, current: spec.id}, this.save);
   }
-
   deleteSpec = () => {
     let workbook = this.state.workbook;
     workbook.specs = workbook.specs.filter((s)=> s.id !== this.state.current);
@@ -38,12 +39,11 @@ export default class extends React.Component {
     this.setState({workbook, current}, this.save);
   }
 
-  getIndex = () => {
-    return this.state.workbook.specs.findIndex((s) => s.id === this.state.current);
-  }
+  getIndex = () => this.state.workbook.specs.findIndex((s) => s.id === this.state.current)
 
   save = () => {
-    console.log("save", this.state.workbook);
+    console.log(this.state.workbook);
+    window.localStorage.setItem("workbook", JSON.stringify(this.state.workbook));
   }
 
   infoChange = (info) => {
@@ -59,23 +59,23 @@ export default class extends React.Component {
   }
 
   render(){
+    let spec;
+    if(this.state.current){spec = this.state.workbook.specs[this.getIndex()];}
     return (
       <div className="app">
-        
         <Menu.Container>
           <Menu.Item icon="fas fa-plus" color="btn-primary" onClick={this.addSpec}/>
           {this.state.current && 
           <Menu.Item icon="fas fa-minus" color="btn-danger" onClick={this.deleteSpec}/>
           }
         </Menu.Container>
-        
         <div className="main-container">
           {this.state.current ? (
             <div>
-              <Info info={this.state.workbook.info} onChange={this.infoChange} />
-              <Tree onChange={this.treeChange} />
+              <Info info={spec.info} onChange={this.infoChange}/>
+              <Tree tree={spec.tree} onChange={this.treeChange}/>
             </div>
-          ):( <InfoBlock/> )}
+          ):(<InfoBlock/>)}
         </div>
       </div>  
     );
