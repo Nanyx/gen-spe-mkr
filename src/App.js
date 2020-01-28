@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 
 import * as Menu from './components/menu';
+import SpecList from './components/spec-list';
 import Info from './components/info';
 import Tree from './components/tree';
 
@@ -60,6 +61,12 @@ export default class extends React.Component {
     if(this.state.current){spec = this.state.workbook.specs[this.getIndex()];}
     return (
       <div className="app">
+        {this.state.workbook && 
+          <SpecList 
+            list={this.state.workbook.specs.map(s=> {return {id:s.id, ...s.info};})}
+            onClick={(current) => this.setState({current})}
+          />
+        }
         <Menu.Container>
           <Menu.Item icon="fas fa-plus" color="btn-primary" onClick={this.addSpec}/>
           {this.state.current && 
