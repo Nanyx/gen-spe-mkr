@@ -40,7 +40,6 @@ export default class extends React.Component {
   getIndex = () => this.state.workbook.specs.findIndex((s) => s.id === this.state.current)
 
   save = () => {
-    console.log(this.state.workbook);
     window.localStorage.setItem("workbook", JSON.stringify(this.state.workbook));
   }
 
