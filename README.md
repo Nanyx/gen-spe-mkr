@@ -6,7 +6,7 @@ Stands for Genesys Specialization Maker. Due to the community demand to bring ba
 ## Be advise
 This is an MVP (Minimum Viable Product). I didn't have finished to implement everything I wanted into it.
 
-### [Road Map](https://github.com/Nanyx/gen-spe-mkr/projects/1)
+### Road Map
 - Import / export (Workbook style so you can tidy up your work)
 - Power tree (like those in Force and Destiny)
 - Pinnacle (extended part of a specialization sheet)
