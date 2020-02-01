@@ -36,7 +36,7 @@ Yes and from now on you only need to open a command line or terminal at the root
 ```bash
 C:\Where\I\put\gen-spe-mkr> serve -s build
 ```
-Open up your favorite web browser and go to [http://localhost:5000](http://localhost:5000). As long as you do not delete your browser Cookies, the workbook you work on will remain (I use your browser local storage to keep your stuff). Next stop, letting you import and export your work on your computer.
+Open up your favorite web browser and go to [http://localhost:5000](http://localhost:5000). As long as you do not delete your browser Cookies, the workbook you work on will remain (I use your browser local storage to keep your stuff). You can also save your work on your computer (and eat those cookies).
 
 ## License
 MIT
