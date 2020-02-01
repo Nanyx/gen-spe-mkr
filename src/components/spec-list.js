@@ -7,17 +7,19 @@ export default ({list = [], onClick = ()=>{}}) => (
     <ul>
       {list.map((item, i)=> 
         <Item key={i} 
-          name={`${item.career} 
-          ${item.spec}`} 
-          onClick={()=> onClick(item.id)}
+          name={`${item.career} ${item.spec}`}
+          id={item.id}
+          onClick={onClick}
         />
       )}
     </ul>
   </div>
 );
 
-const Item = ({name}) => (
+const Item = ({name, id, onClick}) => (
   <li>
-    {name}
+    <button type="button" className="btn btn-secondary btn-sm" onClick={()=> onClick(id)}>
+      {name.replace(/\s/g, "").length === 0 ? (<i>not defined</i>) : name}
+    </button>
   </li>
 )

@@ -15,11 +15,16 @@ export default class extends React.Component {
 
   componentDidMount(){
     let workbook = window.localStorage.getItem("workbook");
-    try {
-      workbook = JSON.parse(workbook);
-      let last = workbook.specs[workbook.specs.length-1].id;
-      this.setState({workbook:workbook, current:last});
-    } catch {}
+    if(workbook){
+      try {
+        workbook = JSON.parse(workbook);
+        let lng = workbook.specs.length
+        if(lng > 0){
+          let last = workbook.specs[lng-1].id;
+          this.setState({workbook:workbook, current:last});
+        }
+      } catch (e){ console.error(e); }
+    }
   }
 
   addSpec = () => {
@@ -44,15 +49,15 @@ export default class extends React.Component {
     window.localStorage.setItem("workbook", JSON.stringify(this.state.workbook));
   }
 
-  infoChange = (info) => {
+  infoChange = (tag, value) => {
     let workbook = this.state.workbook;
-    workbook.specs[this.getIndex()].info = info;
+    workbook.specs[this.getIndex()].info[tag] = value;
     this.setState({workbook}, this.save);
   }
 
   treeChange = (tree) => {
     let workbook = this.state.workbook;
-    workbook.tree = tree;
+    workbook.specs[this.getIndex()].tree = tree;
     this.setState({workbook}, this.save);
   }
 
@@ -76,8 +81,8 @@ export default class extends React.Component {
         <div className="main-container">
           {this.state.current ? (
             <div>
-              <Info info={spec.info} onChange={this.infoChange}/>
-              <Tree tree={spec.tree} onChange={this.treeChange}/>
+              <Info {...spec.info} onChange={this.infoChange}/>
+              <Tree {...spec.tree} onChange={this.treeChange}/>
             </div>
           ):(<InfoBlock/>)}
         </div>

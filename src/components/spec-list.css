@@ -1,3 +1,11 @@
 .wb-list {
-  position: static;
+  position: fixed;
+  left:20px;
+  top:10vh;
+  z-index: 100;
+}
+
+.wb-list ul {
+  list-style-type: none;
+  padding:0px;
 }

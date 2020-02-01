@@ -7,38 +7,41 @@ import 'react-resizable/css/styles.css';
 import Talent from './talent';
 import * as Line from './line';
 
+import objTalent from '../models/talent';
 import layout from '../models/tree.json';
 
 export default class extends React.Component { 
-  state = {...this.props.tree}
 
   lineChange = (line) => {
-    let lines = this.state.lines;
+    let lines = this.props.lines;
     let index = lines.findIndex(l => l.id === line.id);
     if(index === -1){ lines.push(line); }
     else { lines[index] = line; }
-    this.setState({lines}, this.save);
+    this.save(null, lines);
   }
   talentChange = (talent) => {
-    let talents = this.state.talents;
+    let talents = this.props.talents;
     let index = talents.findIndex(t=> t.id === talent.id);
     if(index === -1){ talents.push(talent); }
     else { talents[index] = talent; }
-    this.setState({talents}, this.save);
+    this.props.onChange("talents", talents);
+    this.save(talents, null);
   }
 
-  save = () => {
-    this.props.onChange(this.state);
+  save = (talents, lines) => {
+    talents = talents || this.props.talents;
+    lines = lines || this.props.lines;
+    this.props.onChange({lines, talents});
   }
 
   lineIsActive = (id) => {
-    let line = this.state.lines.find((l)=> l.id === id);
+    let line = this.props.lines.find((l)=> l.id === id);
     if(!line){return false;}
     return line.active;
   }
   getTalent = (id) => {
-    let talent = this.state.talents.find((t)=> t.id === id);
-    return talent !== -1 ? talent : null;
+    let talent = this.props.talents.find((t)=> t.id === id);
+    return talent ? talent : new objTalent(id);
   }
 
   render(){

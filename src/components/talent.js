@@ -1,35 +1,27 @@
 import React from 'react';
 
-import model from '../models/talent';
 import * as Group from './group';
 
 import './talent.css';
 
 export default class extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {...(this.props.talent || new model(this.props.segID))};
+  save = (prop) => {
+    let talent = this.props.talent;
+    Object.assign(talent, prop);
+    this.props.onChange(talent);
   }
 
-  save = () => this.props.onChange(this.state);
-
-  descChange = (desc) => {
-    this.setState({desc}, this.save);
-  }
-  nameChange = (name) => {
-    this.setState({name}, this.save);
-  }
   activeChange = () => {
-    this.setState({isActive:!this.state.isActive}, this.save);
+    this.save({isActive:!this.props.talent.isActive});
   }
   rankChange = (e) => {
     e.stopPropagation();
-    this.setState({isRank:!this.state.isRank}, this.save);
+    this.save({isRank:!this.props.talent.isRank});
   }
 
   getXPValue = () => {
-    switch(this.state.id[0]){
+    switch(this.props.segID[0]){
       case 'a': return 5;
       case 'b': return 10;
       case 'c': return 15;
@@ -40,18 +32,18 @@ export default class extends React.Component {
   }
 
   render(){
-    return (
+    return this.props.talent ? (
       <div className="talent flex-column">
         <Group.Container>
-          <Name value={this.state.name} onChange={this.nameChange}/>
-          <Group.Item className={this.state.isActive?"talent-active active":"talent-active"} onClick={this.activeChange}>
-            <Rank isRank={this.state.isRank} onClick={this.rankChange}/>
+          <Name value={this.props.talent.name} onChange={(name) => this.save({name})}/>
+          <Group.Item className={this.props.talent.isActive?"talent-active active":"talent-active"} onClick={this.activeChange}>
+            <Rank isRank={this.props.talent.isRank} onClick={this.rankChange}/>
           </Group.Item>
         </Group.Container>
-        <Desc value={this.state.desc} onChange={this.descChange}/>
+        <Desc value={this.props.talent.desc} onChange={(desc) => this.save({desc})}/>
         <XP value={this.getXPValue()}/>
       </div>
-    );
+    ) : ("");
   }
 }
 
