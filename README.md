@@ -38,5 +38,9 @@ C:\Where\I\put\gen-spe-mkr> serve -s build
 ```
 Open up your favorite web browser and go to [http://localhost:5000](http://localhost:5000). As long as you do not delete your browser Cookies, the workbook you work on will remain (I use your browser local storage to keep your stuff). Next stop, letting you import and export your work on your computer.
 
+## License
+MIT
+
 ## Note
-A really big thanks to Fantasy Flight Game to make such wonderful content.
+A really big thanks to Fantasy Flight Game to make such wonderful content.  
+And for those who are not familiar with github, if you like, give it a star ;)
