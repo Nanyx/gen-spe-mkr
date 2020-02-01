@@ -9,3 +9,7 @@
   list-style-type: none;
   padding:0px;
 }
+
+.wb-list li {
+  margin-bottom: 5px;
+}
