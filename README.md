@@ -38,6 +38,9 @@ C:\Where\I\put\gen-spe-mkr> serve -s build
 ```
 Open up your favorite web browser and go to [http://localhost:5000](http://localhost:5000). As long as you do not delete your browser Cookies, the workbook you work on will remain (I use your browser local storage to keep your stuff). You can also save your work on your computer (and eat those cookies).
 
+## GDPR Compliance
+I don't put any web cookie warning bar because of the simple fact that do not create those cookie, you are. Not a simgle personnal information is taken from this web app and you are the creator of the said content. Those cookies are yours to eat !
+
 ## License
 MIT
 
