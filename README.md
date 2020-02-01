@@ -9,6 +9,7 @@ This is an MVP (Minimum Viable Product). I didn't have finished to implement eve
 ### Road Map
 - ~~Import / export (Workbook style so you can tidy up your work)~~ (done)
 - Revamp of the interface to make it look cute
+- Official webpage
 - Power tree (like those in Force and Destiny)
 - Pinnacle (extended part of a specialization sheet)
 - Some more I haven't thought yet...
