@@ -1,7 +1,7 @@
 .menu {
   position: fixed;
   right: 100px;
-  top: 25vh;
+  top: 10vh;
   z-index: 100;
 }
 

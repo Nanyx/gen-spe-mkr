@@ -12,6 +12,8 @@ import Spec from './models/spec';
 
 export default class extends React.Component {
   state = { workbook:null, current:null }
+  exportRef = React.createRef();
+  importRef = React.createRef();
 
   componentDidMount(){
     let workbook = window.localStorage.getItem("workbook");
@@ -25,6 +27,19 @@ export default class extends React.Component {
         }
       } catch (e){ console.error(e); }
     }
+  }
+
+  /**
+   * @param {Blob} file
+   */
+  loadWorkbook = (file) => {
+    file.text().then(workbook => {
+      try {
+        workbook = Object.assign(new Workbook(), JSON.parse(workbook));
+        let current = workbook.specs[0] ? workbook.specs[workbook.specs.length -1].id : null;
+        this.setState({workbook, current});
+      } catch (e) { console.error(e); }
+    });
   }
 
   addSpec = () => {
@@ -43,7 +58,7 @@ export default class extends React.Component {
     this.setState({workbook, current}, this.save);
   }
 
-  getIndex = () => this.state.workbook.specs.findIndex((s) => s.id === this.state.current)
+  getIndex = () => this.state.workbook.specs.findIndex((s) => s.id === this.state.current);
 
   save = () => {
     window.localStorage.setItem("workbook", JSON.stringify(this.state.workbook));
@@ -73,9 +88,23 @@ export default class extends React.Component {
           />
         }
         <Menu.Container>
-          <Menu.Item icon="fas fa-plus" color="btn-primary" onClick={this.addSpec}/>
           {this.state.current && 
-          <Menu.Item icon="fas fa-minus" color="btn-danger" onClick={this.deleteSpec}/>
+          <div>
+            <input ref={this.importRef} type="file" onChange={(e)=>this.loadWorkbook(e.target.files[0])} hidden/>
+            <a ref={this.exportRef} 
+              href={`data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(this.state.workbook))}`} 
+              download="gen-spe-mkr.gsmwb" style={{display: "none"}}
+            ><i/></a>
+            <Menu.Item icon="fas fa-file-import" color="btn-primary" onClick={()=>this.importRef.current.click()}/>
+            <Menu.Item icon="fas fa-file-export" color="btn-primary" onClick={()=>this.exportRef.current.click()}/>
+          </div>
+          }
+          <Menu.Item icon="fas fa-plus" color="btn-success" onClick={this.addSpec}/>
+          {this.state.current && 
+          <div>
+            <Menu.Item icon="fas fa-minus" color="btn-danger" onClick={this.deleteSpec}/>
+            <Menu.Item icon="fas fa-print" color="btn-secondary" onClick={() => window.print()}/>
+          </div>
           }
         </Menu.Container>
         <div className="main-container">
