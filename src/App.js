@@ -4,6 +4,7 @@ import './App.css';
 
 import * as Menu from './components/menu';
 import SpecList from './components/spec-list';
+import Modal from './components/modal';
 import Info from './components/info';
 import Tree from './components/tree';
 
@@ -115,6 +116,7 @@ export default class extends React.Component {
             </div>
           ):(<InfoBlock/>)}
         </div>
+        <Modal.Modal/>
       </div>  
     );
   }

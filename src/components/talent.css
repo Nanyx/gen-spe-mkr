@@ -10,7 +10,7 @@
   padding-top: 5px;
 }
 
-.talent textarea {
+.talent .desc {
   resize: none;
   height: 100%;
 }

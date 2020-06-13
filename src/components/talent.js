@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as Group from './group';
+import Modal from './modal';
 
 import './talent.css';
 
@@ -40,7 +41,10 @@ export default class extends React.Component {
             <Rank isRank={this.props.talent.isRank} onClick={this.rankChange}/>
           </Group.Item>
         </Group.Container>
-        <Desc value={this.props.talent.desc} onChange={(desc) => this.save({desc})}/>
+        <div className="flex-grow-1">
+          <div dangerouslySetInnerHTML={{__html: this.props.talent.desc}} className="form-control desc" onClick={Modal.toggle} />
+        </div>      
+    {/*<Desc value={this.props.talent.desc} onChange={(desc) => this.save({desc})}/>*/}
         <XP value={this.getXPValue()}/>
       </div>
     ) : ("");
@@ -53,7 +57,7 @@ const Name = ({value, onChange}) => (
 
 const Desc = ({value, onChange}) => (
   <div className="flex-grow-1">
-    <textarea className="form-control desc" value={value} onChange={(e) => onChange(e.target.value)} />
+    <div contentEditable dangerouslySetInnerHTML={{__html: value}} className="form-control desc" onChange={(e) => onChange(e.target.value)} />
   </div>
 );
 
