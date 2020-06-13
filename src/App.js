@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 
-import * as Menu from './components/menu';
+import SideMenu from './components/side-menu';
 import SpecList from './components/spec-list';
 import Modal from './components/modal';
 import Info from './components/info';
@@ -88,26 +88,15 @@ export default class extends React.Component {
             onClick={(current) => this.setState({current})}
           />
         }
-        <Menu.Container>
-          {this.state.current && 
-          <div>
-            <input ref={this.importRef} type="file" onChange={(e)=>this.loadWorkbook(e.target.files[0])} hidden/>
-            <a ref={this.exportRef} 
-              href={`data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(this.state.workbook))}`} 
-              download="gen-spe-mkr.gsmwb" style={{display: "none"}}
-            ><i/></a>
-            <Menu.Item icon="fas fa-file-import" color="btn-primary" onClick={()=>this.importRef.current.click()}/>
-            <Menu.Item icon="fas fa-file-export" color="btn-primary" onClick={()=>this.exportRef.current.click()}/>
-          </div>
-          }
-          <Menu.Item icon="fas fa-plus" color="btn-success" onClick={this.addSpec}/>
-          {this.state.current && 
-          <div>
-            <Menu.Item icon="fas fa-minus" color="btn-danger" onClick={this.deleteSpec}/>
-            <Menu.Item icon="fas fa-print" color="btn-secondary" onClick={() => window.print()}/>
-          </div>
-          }
-        </Menu.Container>
+        <SideMenu
+          current={this.state.current}
+          wb={this.state.workbook}
+          loadWb={this.loadWorkbook}
+          btnImport={this.importRef}
+          btnExport={this.exportRef}
+          add={this.addSpec}
+          del={this.deleteSpec}
+        />
         <div className="main-container">
           {this.state.current ? (
             <div>
