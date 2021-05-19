@@ -8,8 +8,8 @@ const Info = ({spec, career, skills, onChange}) => {
 
   return (
     <div className="info">
-      <Career value={career} onChange={changeSpec}/>
-      <Specialization value={spec} onChange={changeCareer}/>
+      <Career value={career} onChange={changeCareer}/>
+      <Specialization value={spec} onChange={changeSpec}/>
       <Skills value={skills} onChange={changeSkills}/>
     </div>
   );
@@ -18,17 +18,13 @@ const Info = ({spec, career, skills, onChange}) => {
 export default Info;
 
 
-const Career = ({value, onChange = ()=>{}}) => (
+const Career = ({value, onChange}) => (
   <div>
-    <input
-      className="form-control form-control-lg text-uppercase" 
-      placeholder="CAREER" value={value} 
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <input className="form-control form-control-lg text-uppercase" placeholder="CAREER" value={value} onChange={e => onChange(e.target.value)}/>
   </div>
 );
 
-const Specialization = ({value, onChange = ()=>{}}) => (
+const Specialization = ({value, onChange}) => (
   <div>
     <input className="form-control form-control-xl text-uppercase" 
       placeholder="SPECIALIZATION" value={value} 
@@ -37,7 +33,7 @@ const Specialization = ({value, onChange = ()=>{}}) => (
   </div>
 )
 
-const Skills = ({value, onChange = ()=>{}}) => (
+const Skills = ({value, onChange}) => (
   <div className="d-flex">
     <div className="align-self-center text">Spec. Bonus Career Skills:</div>
     <div className="flex-grow-1">

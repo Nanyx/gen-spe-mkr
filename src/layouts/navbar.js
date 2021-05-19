@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, createRef} from 'react';
 import {Navbar, Nav, Form, Button, Modal} from 'react-bootstrap';
 import * as ls from 'local-storage';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -7,12 +7,19 @@ import {faTrashAlt, faPlus, faUpload, faDownload} from '@fortawesome/pro-light-s
 import spec from "../models/spec";
 
 const MainNav = ({wb, setWB}) => {
+  const importRef = createRef();
   const [deleteWB, setDelete] = useState(false);
   const [newSpec, setNewSpec] = useState(false);
 
   useEffect(() => { 
     if(wb.specs.length === 0){ setNewSpec(true); } 
   }, [wb]);
+  
+  const loadWb = (val) => {
+    try { 
+      setWB(JSON.parse(val));
+    } catch { console.error("bad workbook"); }
+  }
 
   const specChange = (id) => {
     wb.current = id;
@@ -61,8 +68,9 @@ const MainNav = ({wb, setWB}) => {
       <Nav>
         <Button variant="danger" onClick={() => setDelete(true)}><FontAwesomeIcon icon={faTrashAlt}/></Button>
         <DeleteWorkbook show={deleteWB} close={() => setDelete(false)}/>
-        <Button variant="secondary"><FontAwesomeIcon icon={faUpload}/></Button>
-        <Button variant="success"><FontAwesomeIcon icon={faDownload}/></Button>
+        <input ref={importRef} type="file" accept=".gsmwb" onChange={e => loadWb(e.target.files[0])} hidden/>
+        <Button variant="secondary" onClick={() => importRef.current.click()}><FontAwesomeIcon icon={faUpload}/></Button>
+        <Button variant="success" href={`data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(wb))}`} download="gen-spe-mkr.gsmwb"><FontAwesomeIcon icon={faDownload}/></Button>
       </Nav>
     </Navbar>
   );

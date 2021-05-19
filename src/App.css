@@ -1,3 +1,11 @@
-.gsm-nav button {
+.gsm-nav button, .gsm-nav a {
   margin-left: 10px;
+}
+
+.gsm-purple {
+  background-color: #563d7c;
+}
+
+.text-purple {
+  color: #563d7c;
 }

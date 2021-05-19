@@ -19,7 +19,6 @@ const Tree = ({lines, talents, onChange}) => {
   }
 
   const talentChange = (talent) => {
-    console.log(talent);
     let index = talents.findIndex(t=> t.id === talent.id);
     if(index === -1){ talents.push(talent); }
     else { talents[index] = talent; }
@@ -52,7 +51,7 @@ const Tree = ({lines, talents, onChange}) => {
             )}
           </div>
         );
-      })}
+      })}      
     </Grid>
   );
 }

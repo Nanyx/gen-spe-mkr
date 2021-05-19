@@ -41,7 +41,6 @@ const App = () => {
   }
 
   const changeTree = (tree) => {
-    console.log(tree);
     wb.specs[getIndex()].tree = tree;
     setWB({...wb});
   }
@@ -53,7 +52,6 @@ const App = () => {
         <Tree {...wb.specs[getIndex()].tree} onChange={changeTree}/>
       </>}
       <CreateWorkbook show={isNew} setWorkbook={createWB}/>
-      {wb && <JsonOut obj={wb}/>}
     </Layout>
   );
 }
@@ -80,9 +78,5 @@ const CreateWorkbook = ({show, setWorkbook}) => {
     </Modal>
   );
 }
-
-const JsonOut = ({obj}) => (
-  <div><pre>{JSON.stringify(obj, null, 2)}</pre></div>
-);
 
 export default App;

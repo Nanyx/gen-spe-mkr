@@ -5,7 +5,7 @@ import Navbar from './navbar';
 const MainLayout = ({wb, setWB, children}) => (
   <>
     {wb && <Navbar wb={wb} setWB={setWB}/>}
-    <Container>
+    <Container style={{marginTop: "60px"}}>
       {children}
     </Container>
   </>
