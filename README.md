@@ -49,4 +49,3 @@ MIT
 
 ## Note
 A really big thanks to Fantasy Flight Game to make such wonderful content.  
-And for those who are not familiar with github, if you like, give it a star ;)
